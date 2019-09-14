@@ -5,37 +5,67 @@
   Use this pattern to create your objects: 
   object name, diet, weight, length, period
 */
+function Dinosaur(object) {
+  this.name = object.name,
+  this.diet = object.diet,
+  this.weight = object.weight,
+  this.length = object.length,
+  this.period = object.period
+}
 
+Dinosaur.prototype.roar = function () {
+  if (this.name === 'tyrannosaurus') {
+    return 'RAWWWR';
+  }
+}
 // tyrannosaurus, carnivorous, 7000kg, 12m, Late Cretaceous
-
+const tyrannosaurus = new Dinosaur({
+  name: 'tyrannosaurus', 
+  diet: 'carnivorous', 
+  weight: '7000kg', 
+  length: '12m', 
+  period: 'Late Cretaceious'
+})
 // stegosaurus, herbivorous, 2000kg, 9m, Late Jurassic
-
+const stegosaurus = new Dinosaur({
+  name: 'stegosaurus', 
+  diet: 'herbivorous', 
+  weight: '2000kg', 
+  length: '9m', 
+  period: 'Late Jurassic'
+})
 // velociraptor, carnivorous, 15kg, 1.8m, Late Cretaceous
-
+const velociraptor = new Dinosaur({
+  name: 'velociraptor', 
+  diet: 'carnivorous', 
+  weight: '15kg', 
+  length: '1.8m', 
+  period: 'Late Cretaceious'
+})
 // Using your dinosaur objects, log answers to these questions:
 
 // How much did tyrannosaurus weigh?
-console.log();
+console.log(tyrannosaurus.weight);
 
 // What was the diet of a velociraptor?
-console.log();
+console.log(velociraptor.diet);
 
 // How long was a stegosaurus?
-console.log();
+console.log(stegosaurus.length);
 
 // What time period did tyrannosaurus live in?
 console.log();
 
 
 // Create a new roar method for the tyrannosaurus.  When called, return "RAWERSRARARWERSARARARRRR!" Log the result.
-console.log();
+console.log(tyrannosaurus.roar());
 
 
 // ==== Arrays ====
 
 // Given an array of college graduates.  Complete the following requests using any array method you like
 
-const graduates = [
+const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern State College","email":"ctorry0@macromedia.com"},
   { id: 1, first_name: "Cynde", university: "Missouri Southern State College", email: "ctorry0@macromedia.com" },
   { id: 2, first_name: "Saundra", university: "The School of the Art Institute of Chicago", email: "swhal1@state.gov" },
   { id: 3, first_name: "Lambert", university: "Marian College", email: "lparham2@techcrunch.com" },
@@ -52,6 +82,9 @@ const graduates = [
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
 const universities = [];
+for (let i = 0; i < graduates.length; i++) {
+  universities.push(graduates[i].university);
+}
 console.log(universities);
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. This will be an array of strings.
@@ -61,10 +94,18 @@ The resulting contact information strings should have a space between the first 
 
 Log the result of your new array. */
 const contactInfo = [];
+for (let i = 0; i < graduates.length; i++) {
+  contactInfo.push(`${graduates[i].first_name} ${graduates[i].email}`);
+}
 console.log(contactInfo);
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called unisWithUni that contains them all. This will be an array of objects. Log the result. */
 const unisWithUni = [];
+for (let i = 0; i < universities.length; i++) {
+  if (universities[i].includes('Uni')) {
+    unisWithUni.push(universities[i]);
+  }
+}
 console.log(unisWithUni);
 
 
@@ -72,7 +113,7 @@ console.log(unisWithUni);
 
 // Given this zoo data from around the United States, follow the instructions below.  Use the specific array methods in the requests below to solve the problems.
 
-const zooAnimals = [
+const zooAnimals = [{"animal_name":"Jackal, asiatic","population":5,"scientific_name":"Canis aureus","state":"Kentucky"},
   { animal_name: "Jackal, asiatic", population: 5, scientific_name: "Canis aureus", state: "Kentucky" },
   { animal_name: "Screamer, southern", population: 1, scientific_name: "Chauna torquata", state: "Alabama" },
   { animal_name: "White spoonbill", population: 8, scientific_name: "Platalea leucordia", state: "Georgia" },
@@ -91,6 +132,7 @@ The zoos want to display both the scientific name and the animal name in front o
 
 */
 const displayNames = [];
+zooAnimals.forEach(animal => displayNames.push(`Name: ${animal.animal_name} Scientific: ${animal.scientific_name}`));
 console.log(displayNames);
 
 /* Request 2: .map()
